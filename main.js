@@ -315,12 +315,30 @@ console.log(totalEarnedUntilNow);
 // Daar zetten we de juiste tekst in (textContent, array[0], array[1])
 // Plakken we de elementen op de pagina (appendChild)
 
-const allTvBrandName = inventory.map((inventory) => {
-  return inventory.brand + ' ' + inventory.name;
-});
-console.log(allTvBrandName); // we hebben nu alle TV merknamen
+// const allTvBrandName = inventory.map((inventory) => {
+//   return inventory.brand + ' ' + inventory.name;
+// });
+// console.log(allTvBrandName); // we hebben nu alle TV merknamen
 
+// we maken de elementen aan (dus 2 x prodItem1 & prodItem2)
 
+// function displayProdItems(inventory, index) {
+// const prodItem1 = document.createElement('li');
+// prodItem1.setAttribute("class", "productListItem");
+// const brandName1 = inventory[0].type;
+// prodItem1.textContent = brandName1;
+//
+// const prodItem2 = document.createElement('li');
+// prodItem2.setAttribute("class", "productListItem");
+// const brandName2 = inventory[1].type;
+// prodItem2.textContent = brandName2;
+// }
+// const list = document.getElementById('productList');
+// list.appendChild(brandName1);
+// list.appendChild(brandName2);
+// console.log(brandName1, list);
+// console.log(brandName2, list);
+// console.log(displayProdItems);
 
 // #### Opdracht 5
 // We gaan één van de twee tv's van de vorige opdracht weergeven in het volgende format:
@@ -335,22 +353,67 @@ console.log(allTvBrandName); // we hebben nu alle TV merknamen
 //   32 inch (81 cm)
 //   ```
 //
-// * **Opdracht 5a:** Zorg ervoor dat er een string wordt gegenereerd voor de naam van een tv.
-//     Maak een functie die één tv-object als parameter verwacht en de naam op de volgende manier samenvoegt: `[merk] [type] - [naam]` zoals `Philips 43PUS6504/12 - 4K TV` of `NIKKEI NH3216SMART - HD smart TV`.
-//     Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken.
-//
-// * **Opdracht 5b:** Zorg ervoor dat de prijs van een tv netjes geformat wordt.
-//     Maak een functie die één tv-prijs als parameter verwacht (zoals `379`) en daar de volgende string van maakt: `€379,-`. Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken.
-//
+// *Opdracht 5a:** Zorg ervoor dat er een string wordt gegenereerd voor de naam van een tv.
+//  Maak een functie die één tv-object als parameter verwacht en de naam op de volgende manier samenvoegt: `[merk] [type] - [naam]` zoals `Philips 43PUS6504/12 - 4K TV` of `NIKKEI NH3216SMART - HD smart TV`.
+//  Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken.
+
+// eerst probeerde ik met .map method maar ik hoef niet alle TV loggen
+// const onlyOneTypeNaam = inventory.map((inventory) => {
+//   return inventory.brand + ' ' + inventory.type + ' - ' + inventory.name
+// });
+// console.log(onlyOneTypeNaam);
+// werkt niet als ik alleen maar één tv wil laten loggen: return inventory[0].brand...
+// dan met for loop maar dat is dus hetzelfde...
+// for (let i = 0; i < inventory.length; i++) {
+// const onlyOneTypeNaam = inventory[i].brand + ' ' + inventory[i].type + ' - ' + inventory[i].name
+// console.log(onlyOneTypeNaam);
+// }
+// deze function logt maar steeds één tv obv de parameter obv de locatie
+function showTv(showOneTv){
+  const onlyOneTypeNaam = inventory[showOneTv].brand + ' ' + inventory[showOneTv].type + ' - ' + inventory[showOneTv].name
+  console.log(onlyOneTypeNaam);
+}
+showTv(0);
+
+// *Opdracht 5b:** Zorg ervoor dat de prijs van een tv netjes geformat wordt.
+// Maak een functie die één tv-prijs als parameter verwacht (zoals `379`) en daar de volgende string van maakt: `€379,-`.
+// Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken.
+//  functie schrijven met een parameter erin (showOneTv)
+//  die parameter bepaalt welke tv's ik wil loggen [0] of [1]
+//  de variable moet steeds de juiste format weergeven binnen de functie
+//  vervolgens log je de juiste format binnen de functie
+// als laatst roep je de functie aan
+function showTvPrice(showOneTv){
+  const onlyOneTypeName = `€${inventory[showOneTv].price},-`
+  console.log(onlyOneTypeName);
+}
+showTvPrice(0);
+
 // * **Opdracht 5c:** Zorg ervoor dat er een string wordt gegenereerd voor alle beschikbare schermgroottes van één tv in zowel inches als cm
 // Maak een functie die één screen-sizes array verwacht en de groottes op de volgende manier samenvoegt: `[schermgrootte] inches ([schermgrootte omgerekend]cm) | [schermgrootte] inches ([schermgrootte omgerekend]cm)` etc.
-//     Dus een input van `[32]` geeft `32 inch (81 cm)` en een input van `[43, 50, 55, 58]` geeft `43 inch (109 cm) | 50 inch (127 cm) | 58 inch (147 cm)`. Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken,
-//     zowel voor tv's met maar één schermgrootte als met tientallen schermgroottes.
+// Dus een input van `[32]` geeft `32 inch (81 cm)` en een input van `[43, 50, 55, 58]` geeft `43 inch (109 cm) | 50 inch (127 cm) | 58 inch (147 cm)`. Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken,
+// zowel voor tv's met maar één schermgrootte als met tientallen schermgroottes.
 //
+
+
 // * **Opdracht 5d:** Zorg ervoor de informatie van één van de twee tv's zoals het voorbeeld wordt weergegeven op de pagina.
 // Gebruik hiervoor de functies die je hebt gemaakt in opdracht 5a, 5b en 5c.
 //
 // * **Opdracht 5e:** Schrijf een functie die ALLE tv's weergeeft op de pagina zoals in het voorbeeld.
 // Dit wil je natuurlijk niet acht keer opnieuw schrijven, want nu zijn het 8 tv's, maar in de toekomst misschien wel 200! Gebruik in deze functie de voorgaande functies die je hebt geschreven,
 // om onderdelen van de data te formatten. Deze "tv-generator-functie" verwacht één parameter: de volledige array met tv-objecten. Vergeet 'm niet aan te roepen!
-// //
+//
+// function displayProdItems(product) {
+//   const prodItem1 = document.createElement('li');
+//   prodItem1.setAttribute("class", "productListItem");
+//   const brandName1 = product.type;
+//   prodItem1.textContent = brandName1;
+// }
+// const wholeList = document.getElementById('productList');
+// wholeList.appendChild(prodItem1);
+// console.log(prodItem1, list);
+//
+// for (let i = 0; i < inventory.length; i++) {
+//   const product = inventory[i];
+//   displayProdItems(product);
+// }
