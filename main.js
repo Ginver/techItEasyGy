@@ -185,7 +185,7 @@ console.log(totalInventoryToSell);
 // * **Opdracht 1b:** Zorg ervoor dat dit aantal _in het rood_ wordt weergegeven op de pagina
 // #soldTV moet totalInventoryToSell weergeven
 
-//  document.getElementById("soldTV").value = totalInventoryToSell;
+document.getElementById("soldTV").value = totalInventoryToSell;
 
   // #### Opdracht 2
 // Opdracht 2a: Gebruik een array-methode om een array te maken met alle tv-type namen.
@@ -279,7 +279,7 @@ console.log(totalAimToEarn);
 // Geef dit in het **blauw** weer op de pagina. #AimToEarn moet totalAimToEarn weergeven
 // #AimToEarn veld weergeeft totalAimToEarn
 
-// document.getElementById("AimToEarn").value = totalAimToEarn;
+document.getElementById("AimToEarn").value = totalAimToEarn;
 
 // * **Opdracht 6b:** Hoeveel hebben we tot nu toe verdient?
 // - [x] maak variabele voor de uitkomst
@@ -303,7 +303,7 @@ console.log(totalEarnedUntilNow);
 // Bereken hoeveel we tot nu toe verdient hebben met het aantal verkochte tv's. Geef dit weer in het **groen** weer op de pagina
 // #earnedUntilNow weergeeft totaalEarnedUntilNow
 
-// document.getElementById('earnedUntilNow').value = totalEarnedUntilNow;
+document.getElementById('earnedUntilNow').value = totalEarnedUntilNow;
 
 // #### Opdracht 4
 // Geef de type-namen van **twee** tv's weer op de pagina. Welke tv's dat precies zijn, maakt niet zoveel uit.
@@ -315,30 +315,30 @@ console.log(totalEarnedUntilNow);
 // Daar zetten we de juiste tekst in (textContent, array[0], array[1])
 // Plakken we de elementen op de pagina (appendChild)
 
-// const allTvBrandName = inventory.map((inventory) => {
-//   return inventory.brand + ' ' + inventory.name;
-// });
-// console.log(allTvBrandName); // we hebben nu alle TV merknamen
+const allTvBrandName = inventory.map((inventory) => {
+  return inventory.brand + ' ' + inventory.name;
+});
+console.log(allTvBrandName); // we hebben nu alle TV merknamen
 
 // we maken de elementen aan (dus 2 x prodItem1 & prodItem2)
 
-// function displayProdItems(inventory, index) {
-// const prodItem1 = document.createElement('li');
-// prodItem1.setAttribute("class", "productListItem");
-// const brandName1 = inventory[0].type;
-// prodItem1.textContent = brandName1;
-//
-// const prodItem2 = document.createElement('li');
-// prodItem2.setAttribute("class", "productListItem");
-// const brandName2 = inventory[1].type;
-// prodItem2.textContent = brandName2;
-// }
-// const list = document.getElementById('productList');
-// list.appendChild(brandName1);
-// list.appendChild(brandName2);
-// console.log(brandName1, list);
-// console.log(brandName2, list);
-// console.log(displayProdItems);
+function displayProdItems(inventory, index) {
+const prodItem1 = document.createElement('li');
+prodItem1.setAttribute("class", "productListItem");
+const brandName1 = inventory[0].type;
+prodItem1.textContent = brandName1;
+
+const prodItem2 = document.createElement('li');
+prodItem2.setAttribute("class", "productListItem");
+const brandName2 = inventory[1].type;
+prodItem2.textContent = brandName2;
+}
+const list = document.getElementById('productList');
+list.appendChild(brandName1);
+list.appendChild(brandName2);
+console.log(brandName1, list);
+console.log(brandName2, list);
+console.log(displayProdItems);
 
 // #### Opdracht 5
 // We gaan één van de twee tv's van de vorige opdracht weergeven in het volgende format:
@@ -391,29 +391,64 @@ showTvPrice(0);
 
 // * **Opdracht 5c:** Zorg ervoor dat er een string wordt gegenereerd voor alle beschikbare schermgroottes van één tv in zowel inches als cm
 // Maak een functie die één screen-sizes array verwacht en de groottes op de volgende manier samenvoegt: `[schermgrootte] inches ([schermgrootte omgerekend]cm) | [schermgrootte] inches ([schermgrootte omgerekend]cm)` etc.
-// Dus een input van `[32]` geeft `32 inch (81 cm)` en een input van `[43, 50, 55, 58]` geeft `43 inch (109 cm) | 50 inch (127 cm) | 58 inch (147 cm)`. Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken,
-// zowel voor tv's met maar één schermgrootte als met tientallen schermgroottes.
-//
+// Dus een input van `[32]` geeft `32 inch (81 cm)` en een input van `[43, 50, 55, 58]` geeft `43 inch (109 cm) | 50 inch (127 cm) | 58 inch (147 cm)`.
+// Zorg ervoor dat je deze functie voor iedere tv zou kunnen gebruiken, zowel voor tv's met maar één schermgrootte als met tientallen schermgroottes.
+// 1inch = 2,54cm
+// eerst alle inch values omrekenen in cm
+// const screenSizes = inventory.map((inventory) => {
+//   const availableSizesInch = inventory.availableSizes;
+//   const availableSizesCm = (inventory.availableSizes * 2.54)
+//   return `${inventory.availableSizes} inch (${availableSizesCm} cm)`
+// });
+// console.log(screenSizes);
+//[
+//   '24 inch (60.96 cm)',
+//   '32 inch (81.28 cm)',
+//   '32 inch (81.28 cm)',
+//   '43,50,55,58 inch (NaN cm)',
+//   '43,50,58,65 inch (NaN cm)',
+//   '43,50,55,58,65,70 inch (NaN cm)',
+//   '55 inch (139.7 cm)',
+//   '43,50,55,58,65 inch (NaN cm)'
+// ]
+// dit berekent helaas de multiple arrays = diverse schermgrootte dus niet in de object alleen de enkele
+// hoe kan ik de availablesizes: [43, 50, 55, 58, 65, 70] apart aanspreken?
 
+// Strategie2:
+  // log eerst alle availablesizes van elke tv:
+    const allScreenSizes = inventory.map((inventory) => {
+      const availableSizesInch = inventory.availableSizes // variabel = laat alle availablesizes zien per tv als array
+     // const availableSizesInchString = availableSizesInch.join(); // hier maak je een string van de arrays
+     //  console.log(availableSizesInchString);
+          return availableSizesInch * 2.54
+    });
+    console.log(allScreenSizes);
+
+// const screenSizes = inventory.map((inventory) => {
+//   const availableSizesInch = inventory.availableSizes;
+//   const availableSizesCm = (inventory.availableSizes * 2.54)
+//   return `${inventory.availableSizes} inch (${availableSizesCm} cm)`
+// });
+// console.log(screenSizes);
 
 // * **Opdracht 5d:** Zorg ervoor de informatie van één van de twee tv's zoals het voorbeeld wordt weergegeven op de pagina.
 // Gebruik hiervoor de functies die je hebt gemaakt in opdracht 5a, 5b en 5c.
-//
+
 // * **Opdracht 5e:** Schrijf een functie die ALLE tv's weergeeft op de pagina zoals in het voorbeeld.
 // Dit wil je natuurlijk niet acht keer opnieuw schrijven, want nu zijn het 8 tv's, maar in de toekomst misschien wel 200! Gebruik in deze functie de voorgaande functies die je hebt geschreven,
 // om onderdelen van de data te formatten. Deze "tv-generator-functie" verwacht één parameter: de volledige array met tv-objecten. Vergeet 'm niet aan te roepen!
 //
-// function displayProdItems(product) {
-//   const prodItem1 = document.createElement('li');
-//   prodItem1.setAttribute("class", "productListItem");
-//   const brandName1 = product.type;
-//   prodItem1.textContent = brandName1;
-// }
-// const wholeList = document.getElementById('productList');
-// wholeList.appendChild(prodItem1);
-// console.log(prodItem1, list);
-//
-// for (let i = 0; i < inventory.length; i++) {
-//   const product = inventory[i];
-//   displayProdItems(product);
-// }
+function displayProdItems(product) {
+  const prodItem1 = document.createElement('li');
+  prodItem1.setAttribute("class", "productListItem");
+  const brandName1 = product.type;
+  prodItem1.textContent = brandName1;
+}
+const wholeList = document.getElementById('productList');
+wholeList.appendChild(prodItem1);
+console.log(prodItem1, list);
+
+for (let i = 0; i < inventory.length; i++) {
+  const product = inventory[i];
+  displayProdItems(product);
+}

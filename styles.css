@@ -38,3 +38,76 @@
     box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
 }
 
+.merken {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+#productListItem1 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem2 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem3 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem4 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem5 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem6 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem7 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
+#productListItem8 {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    width: 150px;
+    padding: 60px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 38%);
+}
