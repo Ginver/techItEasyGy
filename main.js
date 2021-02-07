@@ -260,26 +260,33 @@ console.log("sorted?", TvPrices);
 // - [x] return de juiste property
 // - [x] log het resultaat
 
-const AimToEarn = inventory.map(() => {
+const AimToEarn = inventory.map((inventory) => {
   return inventory.originalStock * inventory.price;
 });
-console.log(AimToEarn); // ?NaN
+console.log(AimToEarn);
 
 const totalAimToEarn = AimToEarn.reduce((a, b) => a + b, 0);
 // return totalInventoryToSell;
-console.log(totalAimToEarn); // ?NaN
+console.log(totalAimToEarn);
 
-//     Bereken wat de totale opbrengst is, als we alle exemplaren van ieder type zouden verkopen. Geef dit in het **blauw** weer op de pagina.
-// const aim = document.getElementById("totalAimToEarn"); // ? werkt niet!!
+// Bereken wat de totale opbrengst is, als we alle exemplaren van ieder type zouden verkopen. Geef dit in het **blauw** weer op de pagina.
+
+document.getElementById("AimToEarn").value = totalAimToEarn;
 
 
 // * **Opdracht 6b:** Hoeveel hebben we tot nu toe verdient?
-//     Bereken hoeveel we tot nu toe verdient hebben met het aantal verkochte tv's. Geef dit weer in het **groen** weer op de pagina
-const totalEarned = inventory.map(() => {
+
+const EarnedUntilNow = inventory.map((inventory) => {
   return inventory.sold * inventory.price
 });
-console.log(totalEarned);
+console.log(EarnedUntilNow);
 
+const totalEarnedUntilNow = EarnedUntilNow.reduce((a, b) => a + b, 0);
+// return totalInventoryToSell;
+console.log(totalEarnedUntilNow);
+
+//     Bereken hoeveel we tot nu toe verdient hebben met het aantal verkochte tv's. Geef dit weer in het **groen** weer op de pagina
+document.getElementById('earnedUntilNow').value = totalEarnedUntilNow;
 
 // #### Opdracht 4
 // Geef de type-namen van **twee** tv's weer op de pagina. Welke tv's dat precies zijn, maakt niet zoveel uit.
