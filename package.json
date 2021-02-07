@@ -1,0 +1,19 @@
+{
+  "name": "techiteasygy",
+  "version": "1.0.0",
+  "description": "'testing opdracht techItEasy'",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ginver/techItEasyGy.git"
+  },
+  "author": "Gigi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ginver/techItEasyGy/issues"
+  },
+  "homepage": "https://github.com/Ginver/techItEasyGy#readme"
+}
