@@ -179,22 +179,23 @@ const countInventoryToSell = inventory.map((inventory) => {
 console.log(countInventoryToSell);
 
 const totalInventoryToSell = countInventoryToSell.reduce((a, b) => a + b, 0);
-// return totalInventoryToSell;
+// log totalInventoryToSell;
 console.log(totalInventoryToSell);
 
 // * **Opdracht 1b:** Zorg ervoor dat dit aantal _in het rood_ wordt weergegeven op de pagina
+// #soldTV moet totalInventoryToSell weergeven
 
-  document.getElementById("soldTV").value = totalInventoryToSell;
+//  document.getElementById("soldTV").value = totalInventoryToSell;
 
   // #### Opdracht 2
 // Opdracht 2a: Gebruik een array-methode om een array te maken met alle tv-type namen.
 // MAP -> ['fancy samsung', 'fancier samsung', 'lg big screen']
-// - [x] maak variabele voor de uitkomst
+// - [x] maak variabele voor de uitkomst: allTvName
 // - [x] inventory.map()
 // - [x] geef een functie aan map als argument
-// - [x] voeg de parameter toe (televisie, product)
+// - [x] voeg de parameter toe (name)
 // - [x] zoeken naar de juiste property
-// - [x] return de juiste property
+// - [x] return de juiste property (inventory.name)
 // - [x] log het resultaat
 
 const allTvName = inventory.map((inventory) => {
@@ -205,7 +206,7 @@ console.log(allTvName);
 // Opdracht 2b: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die volledig uitverkocht zijn.
 
 // FILTER ->
-// - [x] maak variabele voor de uitkomst
+// - [x] maak variabele voor de uitkomst (soldTvTypes)
 // - [x] inventory.filter()
 // - [x] geef een functie aan map als argument
 // - [x] voeg de parameter toe (televisie, product)
@@ -215,9 +216,9 @@ console.log(allTvName);
 // - [x] log het resultaat
 
 const soldTvTypes = inventory.filter((inventory) => {
- return (inventory.originalStock === inventory.sold); // true of false
+ return (inventory.originalStock === inventory.sold); // true of false geeft aan welke merken helemaal uitverkocht zijn
    });
-console.log(soldTvTypes);
+console.log(soldTvTypes); // log je hoeveel tv's zijn verkocht per merk
 
 const soldTvTypesName = soldTvTypes.map((soldTvType) => {
   return soldTvType.name; // alleen de namen mappen
@@ -226,10 +227,17 @@ console.log(soldTvTypesName);
 
 // 2c
 //* **Opdracht 2c:** Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die over AmbiLight beschikken.
+// - [x] maak variabele voor de uitkomst (hoeveel Ambilight)
+// - [x] inventory.filter()
+// - [x] geef een functie aan
+// - [x] als ambilight true is
+// - [x] zoeken naar de juiste property
+// - [x] return de juiste property
+// - [x] log het resultaat
 
-
+// FILTER -> [{}, {}, {}],[{}, {}]
 const AmbilightTv = inventory.filter((inventory) => {
-  return inventory.ambilight = true; // true of false
+  return inventory.ambilight = true; // true of false geeft aan welke merken hebben ambilight
 });
 console.log(AmbilightTv);
 
@@ -251,11 +259,10 @@ console.log("sorted?", TvPrices);
 // #### Opdracht 3
 // * **Opdracht 3a:** Wat is onze doel-opbrengst?
 
-
-// - [x] maak variabele voor de uitkomst
+// - [x] maak variabele voor de uitkomst: AimToEarn
 // - [x] inventory.map()
 // - [x] geef een functie aan map als argument
-// - [x] voeg de parameter toe (televisie, product)
+// - [x] voeg de parameter toe originalstock * price
 // - [x] zoeken naar de juiste property
 // - [x] return de juiste property
 // - [x] log het resultaat
@@ -264,35 +271,58 @@ const AimToEarn = inventory.map((inventory) => {
   return inventory.originalStock * inventory.price;
 });
 console.log(AimToEarn);
-
+// Bereken wat de totale opbrengst is, als we alle exemplaren van ieder type zouden verkopen.
 const totalAimToEarn = AimToEarn.reduce((a, b) => a + b, 0);
 // return totalInventoryToSell;
 console.log(totalAimToEarn);
 
-// Bereken wat de totale opbrengst is, als we alle exemplaren van ieder type zouden verkopen. Geef dit in het **blauw** weer op de pagina.
+// Geef dit in het **blauw** weer op de pagina. #AimToEarn moet totalAimToEarn weergeven
+// #AimToEarn veld weergeeft totalAimToEarn
 
-document.getElementById("AimToEarn").value = totalAimToEarn;
-
+// document.getElementById("AimToEarn").value = totalAimToEarn;
 
 // * **Opdracht 6b:** Hoeveel hebben we tot nu toe verdient?
+// - [x] maak variabele voor de uitkomst
+// - [x] inventory.map()
+// - [x] geef een functie aan map als argument
+// - [x] voeg de parameter toe (sold * price)
+// - [x] zoeken naar de juiste property
+// - [x] return de juiste property
+// - [x] log het resultaat
 
 const EarnedUntilNow = inventory.map((inventory) => {
   return inventory.sold * inventory.price
 });
 console.log(EarnedUntilNow);
 
+// reken de winst bij elkaar op van elke verkochte computers
 const totalEarnedUntilNow = EarnedUntilNow.reduce((a, b) => a + b, 0);
 // return totalInventoryToSell;
 console.log(totalEarnedUntilNow);
 
-//     Bereken hoeveel we tot nu toe verdient hebben met het aantal verkochte tv's. Geef dit weer in het **groen** weer op de pagina
-document.getElementById('earnedUntilNow').value = totalEarnedUntilNow;
+// Bereken hoeveel we tot nu toe verdient hebben met het aantal verkochte tv's. Geef dit weer in het **groen** weer op de pagina
+// #earnedUntilNow weergeeft totaalEarnedUntilNow
+
+// document.getElementById('earnedUntilNow').value = totalEarnedUntilNow;
 
 // #### Opdracht 4
 // Geef de type-namen van **twee** tv's weer op de pagina. Welke tv's dat precies zijn, maakt niet zoveel uit.
-//     Voor nu betekent dit dat je het appenden van de nodes twee keer moet uitschrijven, dat is niet erg!
-//
-//     #### Opdracht 5
+// Voor nu betekent dit dat je het appenden van de nodes twee keer moet uitschrijven, dat is niet erg!
+// We maken een lijst element in de HTML (ul)
+// Die lijst krijgt een id in HTML
+// nieuwe element aanmaken - createElement + appendChild 2x
+// We maken 2 tv elementen (createElement)
+// Daar zetten we de juiste tekst in (textContent, array[0], array[1])
+// Plakken we de elementen op de pagina (appendChild)
+
+const allTvBrandName = inventory.map((inventory) => {
+  return inventory.brand + ' ' + inventory.name;
+});
+console.log(allTvBrandName); // we hebben nu alle TV merknamen
+
+
+
+// #### Opdracht 5
 // We gaan één van de twee tv's van de vorige opdracht weergeven in het volgende format:
 //
 //     ```
