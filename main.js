@@ -183,10 +183,10 @@ const totalInventoryToSell = countInventoryToSell.reduce((a, b) => a + b, 0);
 console.log(totalInventoryToSell);
 
 // * **Opdracht 1b:** Zorg ervoor dat dit aantal _in het rood_ wordt weergegeven op de pagina
-// const soldTV = document.getElementById("soldTV");
-// const soldTV = document.getElementById("soldTV").textContent = totalInventoryToSell; // komt niet in rode inputveld terecht
+ const totalView = document.getElementById('soldTV');
+ const totalView = document.getElementById('soldTV').textContent = totalInventoryToSell; // komt niet in rode inputveld terecht
 
-
+totalView.addEventListener('keyup', e);
 // #### Opdracht 2
 // Opdracht 2a: Gebruik een array-methode om een array te maken met alle tv-type namen.
 // MAP -> ['fancy samsung', 'fancier samsung', 'lg big screen']
