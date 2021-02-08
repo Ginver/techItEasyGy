@@ -415,22 +415,22 @@ showTvPrice(0);
 // hoe kan ik de availablesizes: [43, 50, 55, 58, 65, 70] apart aanspreken?
 
 // Strategie2:
-  // log eerst alle availablesizes van elke tv:
+      // log eerst alle availablesizes van elke tv:
     const allScreenSizes = inventory.map((inventory) => {
-     // const availableSizesInch = inventory.availableSizes // variabel = laat alle availablesizes zien per tv als array
-     // const availableSizesInchString = availableSizesInch.join(); // hier maak je een string van de arrays
-     //  console.log(availableSizesInchString);
-     //     return availableSizesInch * 2.54
-      return inventory.availableSizes; // geeft alle arrays van availableSizes van de TV types
-      if (allScreenSizesInch.length > 1) {
-        for (let i = 0; allScreenSizesInch.length < 0; i++) {
+     const availableSizesInch = inventory.availableSizes // variabel = laat alle availablesizes zien per tv als array
+     const availableSizesInchString = availableSizesInch.join(); // hier maak je een string van de arrays
+      console.log(availableSizesInchString);
+      //    return availableSizesInchString * 2.54
+      //   return inventory.availableSizes; // geeft alle arrays van availableSizes van de TV types
+      if (availableSizesInch.length > 1) {
+        for (let i = 0; i < availableSizesInchString.length; i++) {
           const availableSizesInch = inventory.availableSizes;
           return availableSizesInch * 2.54;
           console.log(availableSizesInch);
         }
       }
     });
-
+    console.log(allScreenSizes); // werkt niet helaas
 
 // const screenSizes = inventory.map((inventory) => {
 //   const availableSizesInch = inventory.availableSizes;
@@ -459,4 +459,4 @@ showTvPrice(0);
 // for (let i = 0; i < inventory.length; i++) {
 //   const product = inventory[i];
 //   displayProdItems(product);
-// }
+// };
