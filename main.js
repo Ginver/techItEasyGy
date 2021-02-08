@@ -419,18 +419,23 @@ showTvPrice(0);
     const allScreenSizes = inventory.map((inventory) => {
      const availableSizesInch = inventory.availableSizes // variabel = laat alle availablesizes zien per tv als array
      const availableSizesInchString = availableSizesInch.join(); // hier maak je een string van de arrays
-      console.log(availableSizesInchString);
-      //    return availableSizesInchString * 2.54
+      console.log(availableSizesInchString); // hiermee log je dus de string van de array
+      //    return availableSizesInchString * 2.54 // NaN - werkt niet helaas
       //   return inventory.availableSizes; // geeft alle arrays van availableSizes van de TV types
+
+      //misschien werkt het met een for loop om te zeggen
       if (availableSizesInch.length > 1) {
         for (let i = 0; i < availableSizesInchString.length; i++) {
           const availableSizesInch = inventory.availableSizes;
           return availableSizesInch * 2.54;
-          console.log(availableSizesInch);
+          console.log(availableSizesInch[3][0] * 2.54);
         }
+      } else {
+        const availableSizesCm = (inventory.availableSizes * 2.54)
+        return `${inventory.availableSizes} inch (${availableSizesCm} cm)`
       }
     });
-    console.log(allScreenSizes); // werkt niet helaas
+    console.log(allScreenSizes); // werkt niet helaas - ik kan niet bij de nested array elementen
 
 // const screenSizes = inventory.map((inventory) => {
 //   const availableSizesInch = inventory.availableSizes;
